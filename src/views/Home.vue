@@ -9,11 +9,16 @@
       >
     </div>
     <div v-if="account">
+      <b>Your account:</b><br />
       {{ account }}<br />
       {{ balance }} ETH <br /><br />
       --
       <br /><br />
       <div v-if="order">
+        {{ order.metadata.schema }}<br />
+        <b>{{ order.asset.name }}</b
+        ><br />
+        {{ order.currentPrice / 1000000000000000000 }} ETH<br /><br />
         <b-button type="is-primary" v-on:click="buyItem()">BUY ITEM</b-button
         ><br /><br />
         <pre
@@ -35,6 +40,11 @@
     </div>
   </div>
 </template>
+<style>
+* {
+  font-family: "Courier New", Courier, monospace;
+}
+</style>
 <script>
 import Web3 from "web3";
 import { OpenSeaPort, Network } from "opensea-js";
